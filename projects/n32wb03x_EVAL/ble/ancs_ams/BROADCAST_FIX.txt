@@ -1,0 +1,1 @@
+Broadcast fix: restored the original ANCS 128-bit solicitation advertisement. A legacy 31-byte advertisement cannot contain both ANCS and AMS 128-bit solicitation UUIDs together when the device name is also attached. AMS discovery is therefore not started automatically until the advertising path is verified.
