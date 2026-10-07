@@ -221,7 +221,8 @@ enum TASK_API_ID
 		
     TASK_ID_ANCC         = 75,   // Apple Notification Center Service Client Task
     TASK_ID_RDTSC_16BIT  = 76,   // Raw data transfer client in 16bit uuid task
-	TASK_ID_AMSC		 = 77,	
+	TASK_ID_AMSC         = 77,
+		
     TASK_ID_MESH         = 200,  // Mesh Task
 
     /* 240 -> 241 reserved for Audio Mode 0 */

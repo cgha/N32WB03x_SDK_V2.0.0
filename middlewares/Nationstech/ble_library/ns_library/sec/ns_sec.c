@@ -111,7 +111,7 @@ static uint8_t ns_bond_db_get_size(void)
     uint16_t bond_space_valid = 0;
     struct local_device_bond_data_tag* p_strored = (void*)app_sec_env.sec_init.bond_db_addr;
     
-    NS_LOG_INFO("%s\r\n",__func__);
+    //NS_LOG_DEBUG("%s\r\n",__func__);
     
     bond_space_valid = p_strored->valid_flag;
     bond_num = p_strored->num;
@@ -130,7 +130,7 @@ static uint8_t ns_bond_db_get_size(void)
     {
         bond_num = 0;
     }
-	NS_LOG_INFO("Bond num= %d\r\n",bond_num);
+    
     return bond_num;
 }
 
@@ -855,14 +855,11 @@ static int gapc_encrypt_req_ind_handler(ke_msg_id_t const msgid,
         ke_msg_send(p_cmd);
     }
     else{
-		NS_LOG_DEBUG("found\r\n");
         if(app_sec_env.sec_init.ns_sec_msg_handler)
         {
             struct sec_msg_t sec_msg = {NS_SEC_NULL_MSG,NULL};
             sec_msg.msg_id = NS_SEC_LTK_FOUND;
-			 NS_LOG_DEBUG("ns_sec_msg_handler0\r\n");
             app_sec_env.sec_init.ns_sec_msg_handler(&sec_msg);
-			NS_LOG_DEBUG("ns_sec_msg_handler1\r\n");
         }            
     }
 

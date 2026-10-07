@@ -134,10 +134,6 @@ static void ancc_cleanup(struct prf_task_env *env, uint8_t conidx, uint8_t reaso
 {
     struct ancc_env_tag *ancc_env = (struct ancc_env_tag *) env->env;
 
-    if (!ancc_env) {
-		NS_LOG_INFO("[ANCC] cleanup: ancc_env NULL, skip\r\n");
-        return;
-    }
     // Clean up environment variable allocated for task instance
     if (ancc_env->env[conidx] != NULL)
     {
@@ -257,13 +253,6 @@ void ancc_enable_rsp_send(struct ancc_env_tag *ancc_env, uint8_t conidx, uint8_t
 
     if (status == GAP_ERR_NO_ERROR)
     {
-		// =====????????? =====
-        if (!ancc_env->env[conidx]) {
-            NS_LOG_INFO("[ANCC] enable_rsp: env[conidx] NULL, skip register\r\n");
-            ke_msg_send(rsp);
-            return;
-        }
-		
         rsp->anc = ancc_env->env[conidx]->anc;
         // Register ANCC task in gatt for indication/notifications
         prf_register_atthdl2gatt(&ancc_env->prf_env, conidx, &ancc_env->env[conidx]->anc.svc);

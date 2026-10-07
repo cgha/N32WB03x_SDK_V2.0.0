@@ -668,7 +668,6 @@ static int gapm_cmp_evt_handler(ke_msg_id_t const msgid,
             #if (BLE_APP_SEC)
             if(p_param->status != CO_ERROR_NO_ERROR)
             {
-				NS_LOG_INFO("resolve addr, %x\r\n", app_env.next_svc);
                 //not match yet, resolv next addr
                 ns_bond_resolv_addr_start(&app_env.peer_addr,app_env.next_svc--);
             }
@@ -1140,6 +1139,7 @@ static int gapc_disconnect_ind_handler(ke_msg_id_t const msgid,
 {
   
     NS_LOG_INFO("BLE Disconnected,reson:%x,conidx:%d \r\n",p_param->reason,KE_IDX_GET(src_id));    
+    
     app_env.conn_env[KE_IDX_GET(src_id)].conidx = GAP_INVALID_CONIDX;    
     if(ns_ble_get_connection_num() == 0)
     {

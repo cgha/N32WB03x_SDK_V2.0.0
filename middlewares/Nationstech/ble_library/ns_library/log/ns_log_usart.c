@@ -70,16 +70,16 @@
 //#define _USART2_COM_
 
 #ifdef _USART1_COM_
-#define USARTx              USART2
-#define USARTx_CLK          RCC_APB1_PERIPH_USART2
-#define USARTx_GPIO         GPIOA
-#define USARTx_GPIO_CLK     RCC_APB2_PERIPH_GPIOA
-#define USARTx_RxPin        GPIO_PIN_10
+#define USARTx              USART1
+#define USARTx_CLK          RCC_APB2_PERIPH_USART1
+#define USARTx_GPIO         GPIOB
+#define USARTx_GPIO_CLK     RCC_APB2_PERIPH_GPIOB
+#define USARTx_RxPin        GPIO_PIN_7
 #define USARTx_TxPin        GPIO_PIN_6
-#define USARTx_Rx_GPIO_AF   GPIO_AF3_USART2
-#define USARTx_Tx_GPIO_AF   GPIO_AF2_USART2
+#define USARTx_Rx_GPIO_AF   GPIO_AF4_USART1
+#define USARTx_Tx_GPIO_AF   GPIO_AF4_USART1
 #define GPIO_APBxClkCmd     RCC_EnableAPB2PeriphClk
-#define USART_APBxClkCmd    RCC_EnableAPB1PeriphClk
+#define USART_APBxClkCmd    RCC_EnableAPB2PeriphClk
 #endif
 
 #ifdef _USART2_COM_

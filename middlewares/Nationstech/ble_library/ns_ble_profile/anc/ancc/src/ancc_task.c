@@ -218,19 +218,8 @@ static int gattc_cmp_evt_handler(ke_msg_id_t const msgid,
 
     ASSERT_ERR(ancc_env != NULL);
     ASSERT_ERR(ancc_env->env[conidx] != NULL);
-	
-	 // =====????ASSERT_ERR ?? if ??,?? Release ????? =====
-    if (!ancc_env) {
-        NS_LOG_INFO("[ANCC] gattc_cmp_evt: ancc_env NULL\r\n");
-        return KE_MSG_CONSUMED;
-    }
-    if (!ancc_env->env[conidx]) {
-        NS_LOG_INFO("[ANCC] gattc_cmp_evt: env[conidx] NULL, conidx=%u\r\n", conidx);
-        return KE_MSG_CONSUMED;
-    }
-	
 	NS_LOG_DEBUG("%s,status= %x\r\n", __func__,param->status);
-	if (ancc_env->state[conidx] == ANCC_DISCOVERING)
+   if (ancc_env->state[conidx] == ANCC_DISCOVERING)
  	{
       uint8_t status = param->status;
 	
@@ -747,12 +736,6 @@ static int gattc_event_ind_handler(ke_msg_id_t const msgid,
     struct ancc_env_tag *ancc_env = PRF_ENV_GET(ANCC, ancc);
     uint8_t conidx = KE_IDX_GET(dest_id);
 	NS_LOG_DEBUG("%s\r\n", __func__);
-	
-	 // =====?????????:????????????,???? =====
-    if (!ancc_env || !ancc_env->env[conidx]) {
-        NS_LOG_INFO("[ANCC] gattc_event_ind: env NULL, conidx=%u, dropping\r\n", conidx);
-        return KE_MSG_CONSUMED;
-    }
 
     if (param->type == GATTC_NOTIFY)
     {
